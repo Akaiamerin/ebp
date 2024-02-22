@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- title -->
+    <title>电子商务平台 | 重置密码</title>
+    <!-- favicon -->
+    <link rel="icon" th:href="@{/static/images/favicon.png}" type="image/png">
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/static/lib/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/main.css}">
+</head>
+
+<body>
+    <!-- preloader start -->
+    <div class="preloader"></div>
+    <!-- preloader end -->
+    <!-- main wrapper start -->
+    <div class="main-wrapper">
+        <div class="d-flex justify-content-center align-items-center viewport-height-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="p-3">
+                                    <div class="my-3 text-center">
+                                        <img th:src="@{/static/images/logo-text.png}" width="200" alt="">
+                                    </div>
+                                    <div class="my-3 text-center">
+                                        <h2>重置密码</h2>
+                                    </div>
+                                    <div class="form-body">
+                                        <form th:action="@{/auth/forget}" method="post">
+                                            <div class="form-group">
+                                                <label class="form-label" for="username">用户名</label>
+                                                <div class="position-relative input-icon">
+                                                    <input class="form-control" type="text"
+                                                           id="username" name="username" placeholder="请输入用户名">
+                                                    <span class="position-absolute top-50 translate-middle-y">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="email">请输入邮箱</label>
+                                                <div class="position-relative input-icon">
+                                                    <input class="form-control" type="text"
+                                                           id="email" name="email" placeholder="请输入邮箱">
+                                                    <span class="position-absolute top-50 translate-middle-y">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="password">密码</label>
+                                                <div class="position-relative input-icon">
+                                                    <input class="form-control" type="password"
+                                                           id="password" name="password" placeholder="请输入密码">
+                                                    <span class="position-absolute top-50 translate-middle-y">
+                                                        <i class="fa fa-lock"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary w-100">重置密码</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="text-center">
+                                                    <span>已有帐号？</span>
+                                                    <a th:href="@{/auth/login}">登录</a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main wrapper end -->
+    <!-- js -->
+    <script th:src="@{/static/lib/jquery/jquery.min.js}"></script>
+    <script th:src="@{/static/lib/bootstrap/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/static/js/main.js}"></script>
+</body>
+
+</html>

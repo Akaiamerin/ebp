@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- title -->
+    <title>电子商务平台 | 订单详情</title>
+    <!-- favicon -->
+    <link rel="icon" th:href="@{/static/images/favicon.png}" type="image/png">
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/static/lib/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/static/lib/metismenu/metisMenu.min.css}">
+    <link rel="stylesheet" th:href="@{/static/lib/DataTables/dataTables.bootstrap5.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/main.css}">
+</head>
+
+<body>
+    <!-- preloader start -->
+    <div th:replace="~{/admin/index::preloader}"></div>
+    <!-- preloader end -->
+    <!-- main wrapper start -->
+    <div class="main-wrapper">
+        <!-- sidebar start -->
+        <aside th:replace="~{/admin/index::sidebar}"></aside>
+        <!-- sidebar end -->
+        <!-- header start -->
+        <header th:replace="~{/admin/index::header}"></header>
+        <!-- header end -->
+        <!-- main content start -->
+        <div class="main-content">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col">
+                        <h2>订单详情</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>订单 id</th>
+                                    <th>用户 id</th>
+                                    <th>用户名</th>
+                                    <th>下单时间</th>
+                                    <th>订单状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td th:text="${orderBaseVO.get(0)}"></td>
+                                    <td th:text="${orderBaseVO.get(1)}"></td>
+                                    <td th:text="${orderBaseVO.get(2)}"></td>
+                                    <td th:text="${orderBaseVO.get(3)}"></td>
+                                    <td th:text="${orderBaseVO.get(4)}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered" id="dataTable">
+                            <thead>
+                                <tr>
+                                    <th>订单详情 id</th>
+                                    <th>商品 id</th>
+                                    <th>商品名称</th>
+                                    <th>商品价格</th>
+                                    <th>图片</th>
+                                    <th>购买数量</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="orderDetailVO : ${orderDetailVOList}">
+                                    <td th:text="${orderDetailVO.get(0)}"></td>
+                                    <td th:text="${orderDetailVO.get(1)}"></td>
+                                    <td th:text="${orderDetailVO.get(2)}"></td>
+                                    <td th:text="${orderDetailVO.get(3)}"></td>
+                                    <td>
+                                        <img th:src="${orderDetailVO.get(4)}" alt="" width="50px" height="50px">
+                                    </td>
+                                    <td th:text="${orderDetailVO.get(5)}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="float-end">
+                            <h3 class="fw-bold" th:text="${'总价格' + price}"></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main content end -->
+        <!-- footer start -->
+        <footer th:replace="~{/admin/index::footer}"></footer>
+        <!-- footer end -->
+    </div>
+    <!-- main wrapper end -->
+    <!-- js -->
+    <script th:src="@{/static/lib/jquery/jquery.min.js}"></script>
+    <script th:src="@{/static/lib/bootstrap/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/static/lib/metismenu/metisMenu.min.js}"></script>
+    <script th:src="@{/static/lib/DataTables/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/static/lib/DataTables/dataTables.bootstrap5.min.js}"></script>
+    <script th:src="@{/static/js/main.js}"></script>
+</body>
+
+</html>
