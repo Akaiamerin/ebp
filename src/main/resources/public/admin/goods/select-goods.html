@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- title -->
+    <title>电子商务平台 | 商品信息</title>
+    <!-- favicon -->
+    <link rel="icon" th:href="@{/static/images/favicon.png}" type="image/png">
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/static/lib/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/static/lib/metismenu/metisMenu.min.css}">
+    <link rel="stylesheet" th:href="@{/static/lib/DataTables/dataTables.bootstrap5.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/main.css}">
+</head>
+
+<body>
+    <!-- preloader start -->
+    <div th:replace="~{/admin/index::preloader}"></div>
+    <!-- preloader end -->
+    <!-- main wrapper start -->
+    <div class="main-wrapper">
+        <!-- sidebar start -->
+        <aside th:replace="~{/admin/index::sidebar}"></aside>
+        <!-- sidebar end -->
+        <!-- header start -->
+        <header th:replace="~{/admin/index::header}"></header>
+        <!-- header end -->
+        <!-- main content start -->
+        <div class="main-content">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col">
+                        <h2>商品信息</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <a class="btn btn-primary" th:href="@{/admin/insert-goods}">增加商品</a>
+                        </div>
+                        <table class="table table-bordered" id="dataTable">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>商品类型</th>
+                                    <th>名称</th>
+                                    <th>原价</th>
+                                    <th>现价</th>
+                                    <th>库存</th>
+                                    <th>图片</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="goodsDetailVO : ${goodsDetailVOList}">
+                                    <td th:text="${goodsDetailVO.get(0)}"></td>
+                                    <td th:text="${goodsDetailVO.get(1)}"></td>
+                                    <td th:text="${goodsDetailVO.get(2)}"></td>
+                                    <td th:text="${goodsDetailVO.get(3)}"></td>
+                                    <td th:text="${goodsDetailVO.get(4)}"></td>
+                                    <td th:text="${goodsDetailVO.get(5)}"></td>
+                                    <td>
+                                        <img th:src="${goodsDetailVO.get(6)}" alt="" width="50px" height="50px">
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary"
+                                           th:href="@{'/admin/update-goods?id='+${goodsDetailVO.get(0)}}">修改</a>
+                                        <a class="btn btn-primary"
+                                           th:href="@{'/admin/delete-goods?id='+${goodsDetailVO.get(0)}}"
+                                           onclick="javascript:return confirm('确定删除？');">删除</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main content end -->
+        <!-- footer start -->
+        <footer th:replace="~{/admin/index::footer}"></footer>
+        <!-- footer end -->
+    </div>
+    <!-- main wrapper end -->
+    <!-- js -->
+    <script th:src="@{/static/lib/jquery/jquery.min.js}"></script>
+    <script th:src="@{/static/lib/bootstrap/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/static/lib/metismenu/metisMenu.min.js}"></script>
+    <script th:src="@{/static/lib/DataTables/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/static/lib/DataTables/dataTables.bootstrap5.min.js}"></script>
+    <script th:src="@{/static/js/main.js}"></script>
+</body>
+
+</html>

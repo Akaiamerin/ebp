@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- title -->
+    <title>电子商务平台 | 修改我的订单</title>
+    <!-- favicon -->
+    <link rel="icon" th:href="@{/static/images/favicon.png}" type="image/png">
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/static/lib/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/static/lib/metismenu/metisMenu.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/main.css}">
+</head>
+
+<body>
+    <!-- preloader start -->
+    <div class="preloader" th:replace="~{/user/index::preloader}"></div>
+    <!-- preloader end -->
+    <!-- main wrapper start -->
+    <div class="main-wrapper">
+        <!-- sidebar start -->
+        <aside th:replace="~{/user/index::sidebar}"></aside>
+        <!-- sidebar end -->
+        <!-- header start -->
+        <header th:replace="~{/user/index::header}"></header>
+        <!-- header end -->
+        <!-- main content start -->
+        <div class="main-content">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col">
+                        <h2>修改我的订单</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>订单 id</th>
+                                    <th>用户 id</th>
+                                    <th>下单时间</th>
+                                    <th>订单状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td th:text="${orderBaseVO.get(0)}"></td>
+                                    <td th:text="${orderBaseVO.get(1)}"></td>
+                                    <td th:text="${orderBaseVO.get(2)}"></td>
+                                    <td th:text="${orderBaseVO.get(3)}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <form th:action="@{/user/update-my-order-base}" method="post">
+                            <div class="form-group">
+                                <label class="form-label" for="orderBaseId"></label>
+                                <input class="form-control" type="text" id="orderBaseId" name="orderBaseId"
+                                       th:value="${orderBaseVO.get(0)}" hidden>
+                            </div>
+                            <div class="form-group"
+                                 th:if="${orderBaseVO.get(3) == orderStatusList.get(0).getStatus()}">
+                                <label class="form-label" for="orderStatusId1">订单状态</label>
+                                <select class="form-select" id="orderStatusId1" name="orderStatusId">
+                                    <option th:value="${orderStatusList.get(0).getId()}"
+                                            th:text="${orderStatusList.get(0).getStatus()}"
+                                            selected></option>
+                                    <option th:value="${orderStatusList.get(1).getId()}">确认付款</option>
+                                    <option th:value="${orderStatusList.get(4).getId()}">取消</option>
+                                </select>
+                            </div>
+                            <div class="form-group"
+                                 th:if="${orderBaseVO.get(3) == orderStatusList.get(2).getStatus()}">
+                                <label class="form-label" for="orderStatusId2">订单状态</label>
+                                <select class="form-select" id="orderStatusId2" name="orderStatusId">
+                                    <option th:value="${orderStatusList.get(2).getId()}"
+                                            th:text="${orderStatusList.get(2).getStatus()}"
+                                            selected></option>
+                                    <option th:value="${orderStatusList.get(3).getId()}">确认收货</option>
+                                </select>
+                            </div>
+                            <div class="col"
+                                 th:if="${orderBaseVO.get(3) == orderStatusList.get(0).getStatus() || orderBaseVO.get(3) == orderStatusList.get(2).getStatus()}">
+                                <button class="btn btn-primary">提交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main content end -->
+        <!-- footer start -->
+        <footer th:replace="~{/user/index::footer}"></footer>
+        <!-- footer end -->
+    </div>
+    <!-- main wrapper end -->
+    <!-- js -->
+    <script th:src="@{/static/lib/jquery/jquery.min.js}"></script>
+    <script th:src="@{/static/lib/bootstrap/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/static/lib/metismenu/metisMenu.min.js}"></script>
+    <script th:src="@{/static/js/main.js}"></script>
+</body>
+
+</html>
